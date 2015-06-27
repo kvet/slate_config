@@ -163,7 +163,8 @@ var laptopTboltAppsSwitch = switchApps(extend(baseAppsCongig, {
   "Safari": switchScreens({
     "laptop": moveWithScreen(allFullConfig, "tbolt"),
     "tbolt": moveWithScreen(tboltStretchConfig, "tbolt")
-  })
+  }),
+  "SourceTree": moveWithScreen(allFullConfig, "laptop")
 }));
 
 // Layout selector

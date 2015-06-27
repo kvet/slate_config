@@ -1,0 +1,1 @@
+/Users/kvet/.slate.js

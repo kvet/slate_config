@@ -33,6 +33,8 @@ var extend = function() {
   return _.extend.apply(_, args);
 };
 
+var noMove = function() { };
+
 var moveWithScreen = function(config, mon) {
   return function(forceScreen, window) {
     var currentConfig = config;
@@ -132,8 +134,8 @@ var allCenteredConfig = getCenteredConfig(
 
 // Base apps config
 var baseAppsCongig = {
-  "iTunes.MiniPlayer": moveWithScreen(iTunesMiniPlayerConfig, "tbolt"),
   "iTunes": moveWithScreen(allCenteredConfig, "tbolt"),
+  "iTunes.MiniPlayer": moveWithScreen(iTunesMiniPlayerConfig, "tbolt"),
 
   "Skype": moveWithScreen(allCenteredConfig, "tbolt"),
   "Mail": moveWithScreen(allCenteredConfig, "tbolt"),
@@ -145,7 +147,9 @@ var baseAppsCongig = {
   "RubyMine": moveWithScreen(allFullConfig, "tbolt"),
   "PyCharm": moveWithScreen(allFullConfig, "tbolt"),
   "Parallels Desktop": moveWithScreen(allFullConfig, "tbolt"),
-  "SourceTree": moveWithScreen(allFullConfig, "tbolt")
+
+  "SourceTree": moveWithScreen(allFullConfig, "tbolt"),
+  "SourceTree.SourceTree": noMove
 };
 
 // Laptop apps switch

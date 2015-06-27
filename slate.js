@@ -219,6 +219,9 @@ S.bnda({
 
   "f:space;cmd;alt": allFullConfig,
 
+  "[:space;cmd;alt": S.op("throw", { "screen": mons["tbolt"] }),
+  "]:space;cmd;alt": S.op("throw", { "screen": mons["laptop"] }),
+
   "j:space;cmd;alt": getPart(0, 0, 0.5, 1),
   "l:space;cmd;alt": getPart(0.5, 0, 0.5, 1),
   "i:space;cmd;alt": getPart(0, 0, 1, 0.5),

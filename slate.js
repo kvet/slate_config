@@ -35,7 +35,7 @@ var extend = function() {
 
 var noMove = function() { };
 
-var moveWithScreen = function(config, mon) {
+var moveAndThrow = function(config, mon) {
   return function(forceScreen, window) {
     var currentConfig = config;
     if(mon && forceScreen) {
@@ -134,41 +134,40 @@ var allCenteredConfig = getCenteredConfig(
 
 // Base apps config
 var baseAppsCongig = {
-  "iTunes": moveWithScreen(allCenteredConfig, "tbolt"),
-  "iTunes.MiniPlayer": moveWithScreen(iTunesMiniPlayerConfig, "tbolt"),
+  "iTunes": moveAndThrow(allCenteredConfig, "tbolt"),
+  "iTunes.MiniPlayer": moveAndThrow(iTunesMiniPlayerConfig, "tbolt"),
 
-  "Skype": moveWithScreen(allCenteredConfig, "tbolt"),
-  "Mail": moveWithScreen(allCenteredConfig, "tbolt"),
-  "Messages": moveWithScreen(allCenteredConfig, "tbolt"),
-  "Telegram": moveWithScreen(allCenteredConfig, "tbolt"),
+  "Skype": moveAndThrow(allCenteredConfig, "tbolt"),
+  "Mail": moveAndThrow(allCenteredConfig, "tbolt"),
+  "Messages": moveAndThrow(allCenteredConfig, "tbolt"),
+  "Telegram": moveAndThrow(allCenteredConfig, "tbolt"),
 
-  "Xcode": moveWithScreen(allFullConfig, "tbolt"),
-  "IntelliJ IDEA": moveWithScreen(allFullConfig, "tbolt"),
-  "RubyMine": moveWithScreen(allFullConfig, "tbolt"),
-  "PyCharm": moveWithScreen(allFullConfig, "tbolt"),
-  "Parallels Desktop": moveWithScreen(allFullConfig, "tbolt"),
-
-  "SourceTree": moveWithScreen(allFullConfig, "tbolt"),
-  "SourceTree.SourceTree": noMove
+  "Xcode": moveAndThrow(allFullConfig, "tbolt"),
+  "IntelliJ IDEA": moveAndThrow(allFullConfig, "tbolt"),
+  "RubyMine": moveAndThrow(allFullConfig, "tbolt"),
+  "PyCharm": moveAndThrow(allFullConfig, "tbolt"),
+  "Parallels Desktop": moveAndThrow(allFullConfig, "tbolt")
 };
 
 // Laptop apps switch
 var laptopAppsSwitch = switchApps(extend(baseAppsCongig, {
-  "Safari": moveWithScreen(lapStretchConfig)
+  "Safari": moveAndThrow(lapStretchConfig)
 }));
 
 // Tbolt apps switch
 var tboltAppsSwitch = switchApps(extend(baseAppsCongig, {
-  "Safari": moveWithScreen(tboltStretchConfig)
+  "Safari": moveAndThrow(tboltStretchConfig)
 }));
 
 // Laptop and tbolt apps switch
 var laptopTboltAppsSwitch = switchApps(extend(baseAppsCongig, {
   "Safari": switchScreens({
-    "laptop": moveWithScreen(allFullConfig, "tbolt"),
-    "tbolt": moveWithScreen(tboltStretchConfig, "tbolt")
+    "laptop": moveAndThrow(allFullConfig, "tbolt"),
+    "tbolt": moveAndThrow(tboltStretchConfig, "tbolt")
   }),
-  "SourceTree": moveWithScreen(allFullConfig, "laptop")
+  
+  "SourceTree": moveAndThrow(allFullConfig, "laptop"),
+  "SourceTree.SourceTree": noMove
 }));
 
 // Layout selector

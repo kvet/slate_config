@@ -151,17 +151,23 @@ var baseAppsCongig = {
 
 // Laptop apps switch
 var laptopAppsSwitch = switchApps(extend(baseAppsCongig, {
-  "Safari": moveAndThrow(lapStretchConfig)
+  "Safari": moveAndThrow(lapStretchConfig),
+  "Safari Technology Preview": moveAndThrow(lapStretchConfig)
 }));
 
 // Tbolt apps switch
 var tboltAppsSwitch = switchApps(extend(baseAppsCongig, {
-  "Safari": moveAndThrow(tboltStretchConfig)
+  "Safari": moveAndThrow(tboltStretchConfig),
+  "Safari Technology Preview": moveAndThrow(tboltStretchConfig)
 }));
 
 // Laptop and tbolt apps switch
 var laptopTboltAppsSwitch = switchApps(extend(baseAppsCongig, {
   "Safari": switchScreens({
+    "laptop": moveAndThrow(allFullConfig, "tbolt"),
+    "tbolt": moveAndThrow(tboltStretchConfig, "tbolt")
+  }),
+  "Safari Technology Preview": switchScreens({
     "laptop": moveAndThrow(allFullConfig, "tbolt"),
     "tbolt": moveAndThrow(tboltStretchConfig, "tbolt")
   }),
